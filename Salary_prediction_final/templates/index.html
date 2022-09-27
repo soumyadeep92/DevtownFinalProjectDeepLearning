@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html >
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<head>
+  <meta charset="UTF-8">
+  <title>ML API</title>
+
+</head>
+
+<body style='background-color: #fffeee'>
+
+<div class="container">
+    <div class="heading" style='text-align:center'>
+        <h3>Salary prediction Based on Experience</h3>
+    </div>
+	<br/><hr/><br/><br/>
+ <div>
+    <form action="{{ url_for('predict')}}" style='margin-left:35%' method="post">
+    	<p class="label">Enter Age: </p>
+	<input type="number" name="Age" placeholder="Age" required="required" /><br/><br/>
+	<p class="label">Enter total years of experience (in years): </p>
+	<input type="number" step="any" name="Experience" placeholder="Experience" required="required" /><br/><br/>
+	<p class="label">Designation</p>
+	<label name="Designation" required="required">
+	<input type="radio" name="Designation" value=1 />Designation 1 : Junior<br/>
+	<input type="radio" name="Designation" value=2 />Designation 2 : Associate<br/>
+	<input type="radio" name="Designation" value=3 />Designation 3 : Architect<br/>
+	<input type="radio" name="Designation" value=4 />Designation 4 : Manager
+	</label>
+	<br/><br/>
+	<p class="label">Enter total business value of employee: </p>
+	<input type="number" step="any" name="Total Business Value" placeholder="Total Business Value" required="required" /><br/><br/>
+	<p class="label">Please select the educational qualifications: </p>
+	<p class="label">Enter 1 for Yes, otherwise 0</p>
+	<input type="number" name="Bachelors" placeholder="Bachelors" required="required"/>
+	<input type="number" name="College" placeholder="College Level" required="required"/>
+	<input type="number" name="Masters" placeholder="Masters" required="required"/>
+	<br/>
+	<br/>
+        <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+    </form>
+   <br/>
+   <br/>
+   {{ prediction_text }}
+
+ </div>
+
+ </div>
+</body>
+</html>
