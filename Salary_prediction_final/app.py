@@ -17,7 +17,7 @@ def predict():
 
     output = np.round(prediction[0],2)[0]
 
-    return render_template('index.html', prediction_text='Salary is {}'.format(output))
+    return render_template('index.html', prediction_text='Salary is {} dollars'.format(output))
 
 
 @app.route('/predict_api',methods=['POST'])
