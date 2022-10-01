@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html >
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<head>
+  <meta charset="UTF-8">
+  <title>ML APP</title>
+  <style>
+  body  {
+    background-image: url("https://www.skillioma.com/wp-content/uploads/2020/05/What-is-Company-Revenue-Featured-image.png");
+    background-color: #cccccc;
+    background-repeat: no-repeat;
+    opacity: 1;
+    background-size: cover;
+  }
+</style>
+</head>
+
+<body style='background-color: #fffeee'>
+
+<div class="container">
+    <br/><br/>
+ <div>
+    <form style='padding-top:100px;padding-left:500px;' action="{{ url_for('predict')}}" method="post">
+    	<p class="label">Enter R&D Expenditure: </p>
+	<input type="number" style='width:300px' step="any" name="R&D_Spend" placeholder="R&D_Spend" required="required" /><br/><br/>
+	<p class="label">Enter Administration: </p>
+	<input type="number" step="any" style='width:300px' name="Administration" placeholder="Administration" required="required" /><br/><br/>
+	<p class="label">Enter Marketing Expenditure: </p>
+	<input type="number" step="any" style='width:300px' name="Marketing_Spend" placeholder="Marketing_Spend" required="required" /><br/><br/>
+	<p class="label">Enter Total Profit: </p>
+	<input type="number" step="any" style='width:300px' name="Profit" placeholder="Profit" required="required" /><br/><br/>
+	<br/>
+	<br/>
+        <button type="submit" style='background-color:blue;margin-left:100px;width:100px;color:white'>Predict</button>
+    </form>
+   <br/>
+   <br/>
+   <h3 style='margin-left:450px'>{{ prediction_text }}</h3>
+
+ </div>
+
+ </div>
+</body>
+</html>
