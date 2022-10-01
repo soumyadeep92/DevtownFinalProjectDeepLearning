@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <title>ChatBot</title>
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Bot</title>
+
+    <link rel="stylesheet" href="static/css/chat.css">
+    <link rel="stylesheet" href="static/css/home.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  </head>
+  <body>
+    <div class="chat-bar-collapsible">
+        <button id="chat-button" type="button" class="collapsible">Chat with us!
+            <i id="chat-icon" style="color: #fff;" class="fa fa-fw fa-comments-o"></i>
+        </button>
+     <div class="content">
+      <div class="full-chat-block">
+      <div class="outer-container">
+       <div class="chat-container">
+       <h5 id="chat-timestamp"></h5>
+       <div id="chatbox">
+          <p id="botStarterMessage" class="botText">
+            <span>Hi! I am Jarvis.....How may i entertain you???</span>
+          </p>
+        </div>
+        <div class="chat-bar-input-block">
+        <div id="userInput">
+          <input id="textInput" class="input-box" type="text" name="msg" placeholder="Enter message here..." />
+           <p></p>
+        </div>
+        <div class="chat-bar-icons">
+           <i id="chat-icon" style="color: crimson;" class="fa fa-fw fa-heart" onclick="heartButton()"></i>
+           <i id="chat-icon" style="color: #333;" class="fa fa-fw fa-send" onclick="jarvisButton()"></i>
+        </div>
+        </div>
+         <div id="chat-bar-bottom">
+           <p></p>
+         </div>
+      </div>
+      </div>
+     </div>
+    </div>
+   </div>
+      <script>
+        function getBotResponse() 
+	{
+	  var rawText = $("#textInput").val();
+          var userHtml = '<p class="userText"><span>' + rawText + "</span></p>";
+          $("#textInput").val("");
+          $("#chatbox").append(userHtml);
+          document.getElementById("userInput").scrollIntoView({ block: "start", behavior: "smooth" });
+          $.get("/get", { msg: rawText }).done(function(data) {
+            var botHtml = '<p class="botText"><span>' + data + "</span></p>";
+            $("#chatbox").append(botHtml);
+            document.getElementById("userInput").scrollIntoView({ block: "start", behavior: "smooth" });
+          });
+        }
+        $("#textInput").keypress(function(e) {
+          if (e.which == 13) {
+            getBotResponse();
+          }
+        });
+      </script>
+  </body>
+  <script src="static/scripts/responses.js"></script>
+  <script src="static/scripts/chat.js"></script>
+</html>
