@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html >
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<head>
+  <meta charset="UTF-8">
+  <title>Cluster Savanna Mall</title>
+  <style>
+  body  {
+    background-image: url("https://www.a2plus.green/wp-content/uploads/2018/07/gate_01_v02_n-768x1024.jpg");
+    background-color: #cccccc;
+    background-repeat: no-repeat;
+    opacity: 1;
+    background-size: cover;
+  }
+  .btn:hover{
+    background-color:green;
+    cursor:pointer;
+  }
+  .btn{
+    background-color:lightgreen;
+  }
+</style>
+</head>
+
+<body style='background-color: #fffeee'>
+<div class="container">
+	<h1 style="padding-left:400px;padding-top:80px;color:brown">China Mall Customer Segmentation</h1>
+        <br/><br/>
+	<form action='/predict' style='padding-top:30px;padding-left:500px;' method='POST'>
+        <div>
+            <p><strong>Name: </strong></p>
+	    <input type='text' name='feature_name' placeholder='Enter name' style='width:200px;border-radius:50px' required='required'/>
+	</div>
+	<div>
+            <p><strong>Gender: </strong></p>
+	    <input type='text' name='feature_gender' placeholder='Enter gender' style='width:100px;border-radius:50px' required='required'/>
+	</div>
+	<div>
+            <p><strong>Marital Status: </strong></p>
+            <input type='text' name='feature_status' placeholder='Enter Marital Status' style='width:200px;border-radius:50px' required/>
+	</div>
+	<div>
+            <p><strong>Age: </strong></p>
+            <input type='number' name='feature_age' placeholder='Enter Age' style='width:100px;border-radius:50px' required/>
+	</div>
+	<div>
+            <p><strong>Occupation: </strong></p>
+            <input type='text' name='feature_occu' placeholder='Enter Occupation' style='width:200px;border-radius:50px' required/>
+	</div>
+	
+         <div>
+            <p><strong>Income: </strong></p>
+            <input type="number" placeholder='Enter annual Income($)' step="any" style='width:200px;border-radius:50px' name="feature_01" min='35832' max='309364' required/>
+          </div>
+	  <br/>
+          <div>
+            <p><strong>Purchase Score: </strong></p>
+            <input type="number" placeholder='Enter Purchase Score' style='width:150px;border-radius:50px' name="feature_02" min='0' max='100'/>
+          </div>
+	  <br/><br/>
+          <button type="submit" class="btn" style="margin-left:50px;width:120px;height:30px;border-radius:35px" onClick="window.location.href='/predict'">
+            Predict Cluster
+          </button><br/><br/>
+    </form>
+    </div>
+</body>
+</html>
