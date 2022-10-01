@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html >
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<head>
+  <meta charset="UTF-8">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <title>Facebook Ads Segmentation</title>
+  <style>
+  body  {
+    background-image: url("https://www.postplanner.com/hs-fs/hubfs/how%20to%20write%20a%20facebook%20post.jpg?noresize&width=980&height=515&name=how%20to%20write%20a%20facebook%20post.jpg");
+    background-color: #cccccc;
+    background-repeat: no-repeat;
+    opacity: 0.8;
+    background-size: cover;
+  }
+  .btn{
+    background-color:lightgreen;
+  }
+  .btn:hover{
+    background-color:black;
+    opacity:1;
+    color:white;
+    cursor:pointer;
+  }
+</style>
+</head>
+
+<body style='background-color: #fffeee'>
+<header>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-white">
+    <div class="container-fluid">
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-mdb-toggle="collapse"
+        data-mdb-target="#navbarExample01"
+        aria-controls="navbarExample01"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarExample01">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item active">
+            <a class="nav-link" aria-current="page" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Features</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Pricing</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">About</a>
+          </li>
+        </ul>
+        <input class="form-control mr-sm-2" style='width:500px;' type="search" placeholder="Search" aria-label="Search">
+        <span style='padding-left:10px'><button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button></span>
+      </div>
+    </div>
+  </nav>
+  </header>
+  <br/><br/>
+  <div class="container">
+      <h2 style="margin-top:40px;margin-left:450px;color:#4267B2">Facebook Campaigns Details</h2>
+       <hr/>
+	<form action='/predict' style='padding-top:30px;padding-left:500px;' method='POST'>
+        <div>
+            <p><strong>Campaign ID: </strong></p>
+	    <input type='number' name='feature_id' placeholder='Enter 6-digit ID' style='width:200px;border-radius:50px' required='required' min='100000' max='999999'/>
+	</div>
+	<div>
+            <p><strong>Age: </strong></p>
+	    <input type='number' name='feature_age' placeholder='Enter your age' style='width:100px;border-radius:50px' required='required'/>
+	</div>
+	<div>
+            <p><strong>Gender: </strong></p>
+            <input type='text' name='feature_gender' placeholder='Enter your gender' style='width:200px;border-radius:50px' required/>
+	</div>
+	<div>
+            <p><strong>Interests in Facebook campaigns: </strong></p>
+            <input type='number' name='feature_01' placeholder='Enter your interest rating' style='width:100px;border-radius:50px' required/>
+	</div>
+	<div>
+            <p><strong>Age wise Impressions: </strong></p>
+            <input type='number' name='feature_02' placeholder='Enter Impressions Ratings' style='width:200px;border-radius:50px' required/>
+	</div>
+	
+         <div>
+            <p><strong>Total Time Spent: </strong></p>
+            <input type="number" placeholder='Enter Total Time Spent(in hrs)' step="any" style='width:200px;border-radius:50px' name="feature_time" required/>
+          </div>
+	  <br/><br/>
+          <button type="submit" class="btn" style="margin-left:50px;width:150px;border-radius:15px" onClick="window.location.href='/predict'">
+            Predict Cluster
+          </button><br/><br/>
+    </form>
+    </div>
+</body>
+</html>
