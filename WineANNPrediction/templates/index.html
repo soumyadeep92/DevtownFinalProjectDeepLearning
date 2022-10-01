@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html >
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<head>
+  <meta charset="UTF-8">
+  <title>Artificial Intelligence</title>
+  <style>
+  body  {
+    background-image: url("https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/red-wine-1590591610.jpg?crop=1.00xw:1.00xh;0,0&resize=980:*");
+    background-color: #cccccc;
+    background-repeat: no-repeat;
+    opacity: 1;
+    background-size: cover;
+  }
+  .red{
+    border-radius:350px;
+    background-color:#FFCCCB;
+    border-color:red;
+    height:40px;
+  }
+  .btn{
+    background-color:red;
+    border-color:red;
+  }
+  .btn:hover{
+    background-color:#722F37;
+  }
+</style>
+</head>
+
+<body style='background-color: #fffeee'>
+
+<div class="container">
+    <br/><br/>
+ <div>
+    <h2 style='margin-left:500px;'>Red Wine Quality Prediction</h2>
+    <hr/>
+    <form style='padding-top:10px;padding-left:500px;' action="{{ url_for('predict')}}" method="post">
+    	<p class="label"><strong>Concentration of Fixed Acidity: </strong></p>
+	<input class='red' type="number" style='width:300px' step="any" name="fixed acidity" placeholder="Fixed Acidity(in decimals)" required="required" /><br/><br/>
+	<p class="label"><strong>Concentration of Volatile Acidity: </strong></p>
+	<input class='red' type="number" step="any" style='width:300px' name="volatile acidity" placeholder="Enter Volatile Acidity Percentage(in decimals)" required="required" /><br/><br/>
+	<p class="label"><strong>Concentration of Residual Sugar: </strong></p>
+	<input class='red' type="number" step="any" style='width:300px' name="residual sugar" placeholder="Enter Residual Sugar Percentage(in decimals)" required="required" /><br/><br/>
+	<p class="label"><strong>Concentration of Chlorides: </strong></p>
+	<input class='red' type="number" step="any" style='width:300px' name="chlorides" placeholder="Enter Chlorides Percentage(in decimals)" required="required" /><br/><br/>
+	<p class="label"><strong>Concentration of Total sulfur dioxide: </strong></p>
+	<input class='red' type="number" step="any" style='width:300px' name="total sulfur dioxide" placeholder="Enter Total sulfur dioxide Percentage(in decimals)" required="required" /><br/><br/>
+	<p class="label"><strong>Density: </strong></p>
+	<input class='red' type="number" step="any" style='width:300px' name="density" placeholder="Enter Density(in gm/cc)" required="required" /><br/><br/>
+	<p class="label"><strong>PH: </strong></p>
+	<input class='red' type="number" step="any" style='width:300px' name="pH" placeholder="Enter PH" required="required" /><br/><br/>
+	<p class="label"><strong>Concentration of Sulphates: </strong></p>
+	<input class='red' type="number" step="any" style='width:300px' name="sulphates" placeholder="Enter Sulphates Percentage(in decimals)" required="required" /><br/><br/>
+	<p class="label"><strong>Concentration of Alcohol: </strong></p>
+	<input class='red' type="number" step="any" style='width:300px' name="alcohol" placeholder="Enter Alcohol Percentage(in decimals)" required="required" /><br/><br/>
+	<br/>
+	<br/>
+        <button class='btn' type="submit" style='border-radius:10px;height:30px;cursor:pointer;margin-left:100px;width:100px;color:white'>Predict</button>
+    </form>
+   <br/>
+   <br/>
+   <h3 style='margin-left:500px'><strong>{{ prediction_text }}</strong></h3>
+
+ </div>
+
+ </div>
+</body>
+</html>
