@@ -1,0 +1,12 @@
+For running GUI app:
+1. Open the exe file by double clicking on it
+2. Press q to open result window. If result window doesnt open, iterate between the terminal window and the frame1 screen and press 'q' and '1'
+3. Or Press Ctrl+c to close main window and open result window
+4. Press Quit button to exit
+
+
+
+
+
+Link for dataset download:
+https://www.kaggle.com/datasets/msambare/fer2013/download?datasetVersionNumber=1
