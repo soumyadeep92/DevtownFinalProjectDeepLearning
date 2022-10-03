@@ -51,7 +51,7 @@ cv2.ocl.setUseOpenCL(False)
 emotion_dict = {0: "Angry", 1: "Disgusted", 2: "Fearful", 3: "Happy", 4: "Neutral", 5: "Sad", 6: "Surprised"}
 
 emoji_path=os.path.join(dirname, 'emojis')
-emoji_dist={0:os.path.join(dirname, 'emojis/disgusted.png'),2:os.path.join(dirname, 'emojis/fearful.png'),3:os.path.join(dirname, 'emojis/happy.png'),4:os.path.join(dirname, 'emojis/neutral.png'),5:os.path.join(dirname, 'emojis/sad.png'),6:os.path.join(dirname, 'emojis/surprised.png')}
+emoji_dist={0:os.path.join(dirname, 'emojis/angry.png'),1:os.path.join(dirname, 'emojis/disgusted.png'),2:os.path.join(dirname, 'emojis/fearful.png'),3:os.path.join(dirname, 'emojis/happy.png'),4:os.path.join(dirname, 'emojis/neutral.png'),5:os.path.join(dirname, 'emojis/sad.png'),6:os.path.join(dirname, 'emojis/surprised.png')}
 cascade_path=os.path.join(dirname, 'haarcascade_frontalface_default.xml')
 global last_frame1                                    
 last_frame1 = np.zeros((480, 640, 3), dtype=np.uint8)
