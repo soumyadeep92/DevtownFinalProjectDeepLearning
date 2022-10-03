@@ -14,7 +14,7 @@ from keras.layers import Conv2D
 from keras.optimizers import Adam
 from keras.layers import MaxPooling2D
 from keras.preprocessing.image import ImageDataGenerator
-
+dirname = os.path.dirname(os.path.abspath(__file__))
 emotion_model = Sequential()
 
 emotion_model.add(Conv2D(64, padding='same', kernel_size=(3, 3), input_shape=(48,48,1)))
@@ -43,28 +43,29 @@ emotion_model.add(BatchNormalization())
 emotion_model.add(Activation('relu'))
 emotion_model.add(Dropout(0.25))
 emotion_model.add(Dense(7, activation='softmax'))
-emotion_model.load_weights('C:/Users/Dipak/Desktop/Devtown-Final-SubmissionProject-2022/Emojify/Emoji-Creator/emotion_model.h5')
+emot_path=os.path.join(dirname, 'emotion_model.h5')
+emotion_model.load_weights(emot_path)
 
 cv2.ocl.setUseOpenCL(False)
 
 emotion_dict = {0: "Angry", 1: "Disgusted", 2: "Fearful", 3: "Happy", 4: "Neutral", 5: "Sad", 6: "Surprised"}
 
-
-emoji_dist={0:"C://Users//Dipak//Desktop//Devtown-Final-SubmissionProject-2022//Emojify//emojis//disgusted.png",2:"C://Users//Dipak//Desktop//Devtown-Final-SubmissionProject-2022//Emojify//emojis//fearful.png",3:"C://Users//Dipak//Desktop//Devtown-Final-SubmissionProject-2022//Emojify//emojis//happy.png",4:"C://Users//Dipak//Desktop//Devtown-Final-SubmissionProject-2022//Emojify//emojis//neutral.png",5:"C://Users//Dipak//Desktop//Devtown-Final-SubmissionProject-2022//Emojify//emojis//sad.png",6:"C://Users//Dipak//Desktop//Devtown-Final-SubmissionProject-2022//Emojify//emojis//surprised.png"}
-
+emoji_path=os.path.join(dirname, 'emojis')
+emoji_dist={0:os.path.join(dirname, 'emojis/disgusted.png'),2:os.path.join(dirname, 'emojis/fearful.png'),3:os.path.join(dirname, 'emojis/happy.png'),4:os.path.join(dirname, 'emojis/neutral.png'),5:os.path.join(dirname, 'emojis/sad.png'),6:os.path.join(dirname, 'emojis/surprised.png')}
+cascade_path=os.path.join(dirname, 'haarcascade_frontalface_default.xml')
 global last_frame1                                    
 last_frame1 = np.zeros((480, 640, 3), dtype=np.uint8)
 global cap1
 show_text=[0]
 def show_vid():   
-    
+    #print(dirname)
     cap1 = cv2.VideoCapture(0)                                 
     if not cap1.isOpened():                             
         print("cant open the camera1")
     flag1, frame1 = cap1.read()
     frame1 = cv2.resize(frame1,(600,500))
     
-    bounding_box = cv2.CascadeClassifier('C:/Users/Dipak/Desktop/Devtown-Final-SubmissionProject-2022/Emojify/haarcascade_frontalface_default.xml')
+    bounding_box = cv2.CascadeClassifier(cascade_path)
     gray_frame = cv2.cvtColor(frame1, cv2.COLOR_BGR2GRAY)
     num_faces = bounding_box.detectMultiScale(gray_frame,scaleFactor=1.3, minNeighbors=5)
 
